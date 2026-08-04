@@ -1,107 +1,110 @@
-<div align="center">
+<img width="1837" height="522" alt="image" src="https://github.com/user-attachments/assets/a0231978-d1d3-46ce-af9b-05a7591ad88e" /><div align="center">
 
 # 📰 NewsLens AI
 
-### AI-Powered News Research Assistant using RAG
+### AI-Powered News Research Assistant using Retrieval-Augmented Generation (RAG)
 
-Ask questions about the latest news and get source-grounded answers powered by Retrieval-Augmented Generation (RAG).
+Research any news topic, chat with the latest news articles, and get source-grounded answers powered by AI.
 
-[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
-[![LangChain](https://img.shields.io/badge/LangChain-Framework-green?style=for-the-badge)]()
-[![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)]()
-[![ChromaDB](https://img.shields.io/badge/VectorDB-Chroma-blue?style=for-the-badge)]()
-[![Groq](https://img.shields.io/badge/LLM-Groq-black?style=for-the-badge)]()
-
-### 🌐 Live Demo
-👉 **https://YOUR_STREAMLIT_URL**
+<p>
+<a href="https://newslens-ai-3p4rfqc3mfsoubvscuwpyw.streamlit.app/"><img src="https://img.shields.io/badge/🚀%20Live%20Demo-Streamlit-red?style=for-the-badge"></a>
+<a href="https://github.com/snehit20/NewsLens-AI"><img src="https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github"></a>
+</p>
 
 </div>
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
-NewsLens AI is an intelligent news research assistant that transforms live news into a searchable knowledge base.
+**NewsLens AI** is an AI-powered news research assistant that transforms the latest news articles into a searchable knowledge base using **Retrieval-Augmented Generation (RAG)**.
 
-Instead of reading multiple articles individually, simply enter any news topic and ask questions naturally. The application retrieves relevant news articles, builds a vector database, and answers your questions using Retrieval-Augmented Generation (RAG).
-
-Every response is grounded in the retrieved articles and includes the corresponding sources.
+Instead of reading multiple articles individually, simply enter any news topic and ask questions naturally. NewsLens AI retrieves relevant news articles, builds a vector database, and generates grounded answers with citations.
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-- 📰 Fetches latest news articles using GNews API
-- 🌐 Loads article content directly from news websites
-- ✂️ Intelligent text chunking
-- 🔍 Semantic search with ChromaDB
-- 🤖 RAG-powered question answering
-- 📚 Source-aware responses
-- ⚡ Fast inference using Groq Llama 3.3 70B
-- 🎨 Interactive Streamlit interface
+- 📰 Fetches the latest news articles using the GNews API
+- 🌐 Automatically extracts article content
+- ✂️ Intelligent document chunking
+- 🧠 Semantic search using HuggingFace embeddings
+- 📚 ChromaDB vector database
+- 🤖 Source-grounded answers using Groq Llama 3.3 70B
+- 🔍 Retrieval-Augmented Generation (RAG)
+- 📎 Displays sources used for every answer
+- ⚡ Fast and interactive Streamlit interface
 
 ---
 
-## 🛠️ Tech Stack
+# 🏗️ Architecture
+
+```text
+                User Query
+                     │
+                     ▼
+             GNews API Search
+                     │
+                     ▼
+          Retrieve Relevant URLs
+                     │
+                     ▼
+             WebBaseLoader
+                     │
+                     ▼
+          Text Cleaning & Chunking
+                     │
+                     ▼
+      HuggingFace Embeddings
+                     │
+                     ▼
+            Chroma Vector Store
+                     │
+                     ▼
+              Semantic Retriever
+                     │
+                     ▼
+          Groq Llama 3.3 70B LLM
+                     │
+                     ▼
+          Answer + Source Citations
+```
+
+---
+
+# 🛠 Tech Stack
 
 | Category | Technology |
 |----------|------------|
 | Frontend | Streamlit |
-| LLM | Groq (Llama 3.3 70B) |
 | Framework | LangChain |
-| Embeddings | HuggingFace (all-MiniLM-L6-v2) |
-| Vector Store | ChromaDB |
+| LLM | Groq (Llama 3.3 70B) |
+| Embeddings | sentence-transformers/all-MiniLM-L6-v2 |
+| Vector Database | ChromaDB |
 | News API | GNews |
 | Document Loader | WebBaseLoader |
+| Language | Python |
 
 ---
 
-## 🧠 How It Works
+# 🚀 Live Demo
 
-```text
-User Query
-      │
-      ▼
- GNews API
-      │
-      ▼
-Retrieve News URLs
-      │
-      ▼
-WebBaseLoader
-      │
-      ▼
-Clean & Chunk Articles
-      │
-      ▼
-HuggingFace Embeddings
-      │
-      ▼
-Chroma Vector Store
-      │
-      ▼
-Retriever
-      │
-      ▼
-Groq LLM
-      │
-      ▼
-Answer + Sources
-```
+### Try it here 👇
+
+**https://newslens-ai-3p4rfqc3mfsoubvscuwpyw.streamlit.app/**
 
 ---
 
-## 🚀 Getting Started
+# ⚙️ Installation
 
-### Clone the repository
+Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/NewsLens-AI.git
-
+git clone https://github.com/snehit20/NewsLens-AI.git
 cd NewsLens-AI
 ```
 
-### Create a virtual environment
+Create a virtual environment
 
 ```bash
 python -m venv .venv
@@ -121,7 +124,7 @@ Linux / macOS
 source .venv/bin/activate
 ```
 
-### Install dependencies
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -129,19 +132,18 @@ pip install -r requirements.txt
 
 ---
 
-## 🔑 Environment Variables
+# 🔑 Environment Variables
 
 Create a `.env` file in the project root.
 
 ```env
 GROQ_API_KEY=your_groq_api_key
-
 GNEWS_API_KEY=your_gnews_api_key
 ```
 
 ---
 
-## ▶️ Run the application
+# ▶️ Run Locally
 
 ```bash
 streamlit run app.py
@@ -149,74 +151,71 @@ streamlit run app.py
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```text
-NewsLens-AI/
+NewsLens-AI
 │
 ├── app.py
 ├── sample.py
 ├── requirements.txt
-├── .env
 ├── README.md
-└── assets/
+└── assets
 ```
 
 ---
 
-## 💬 Example Questions
+# 💡 Example Queries
 
-- What happened in AI this week?
+- What are the latest developments in AI?
 - Summarize today's healthcare news.
-- Explain the recent developments in quantum computing.
-- What are the latest updates on Tesla?
-- How is AI being used in education?
+- Explain the recent Tesla announcements.
+- What's happening in the world of robotics?
+- How is AI transforming education?
 
 ---
 
-## 📸 Demo
+# 📸 Demo
 
-<img width="100%" src="assets/demo.png">
+> Add a screenshot of your application below.
 
-> Add a screenshot named **demo.png** inside an **assets** folder.
+<img width="1837" height="522" alt="image" src="https://github.com/user-attachments/assets/d382d10e-7847-435d-8d32-6e1964ed6b8b" />
+<img width="1770" height="797" alt="image" src="https://github.com/user-attachments/assets/b96e5364-83c7-42b2-9d07-4bc718a59552" />
 
----
-
-## 📌 Future Improvements
-
-- [ ] Multi-turn conversations
-- [ ] Streaming responses
-- [ ] Better article cleaning
-- [ ] Hybrid Search (Dense + BM25)
-- [ ] Source ranking
-- [ ] Citation highlighting
-- [ ] Multi-language news support
-- [ ] Research report generation
 
 ---
 
-## 🤝 Contributing
+# 🚧 Future Improvements
 
-Contributions, ideas and suggestions are always welcome!
-
-Feel free to fork the repository and submit a pull request.
+- Multi-turn conversations
+- Persistent chat history
+- Better article preprocessing
+- Hybrid Search (Dense + BM25)
+- Source ranking
+- Streaming responses
+- Research report generation
+- Multi-language support
 
 ---
 
-## ⭐ Support
+# 🤝 Contributing
 
-If you found this project useful,
+Contributions are always welcome!
 
-**leave a ⭐ on the repository!**
+If you'd like to improve NewsLens AI, feel free to fork the repository and open a pull request.
 
-It helps more people discover the project.
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub!
 
 ---
 
 <div align="center">
 
-Made with ❤️ by **Snehit Singh**
+### Built with ❤️ by Snehit Singh
 
-Building AI applications with LangChain • RAG • LLMs
+**LangChain • RAG • Groq • ChromaDB • HuggingFace • Streamlit**
 
 </div>
