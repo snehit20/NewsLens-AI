@@ -15,6 +15,12 @@ def build_chain(que):
     import re
     from dotenv import load_dotenv
     load_dotenv()
+    import streamlit as st
+
+    API_KEY = os.getenv("GNEWS_API_KEY") or st.secrets["GNEWS_API_KEY"]
+    os.environ["GROQ_API_KEY"] = (
+        os.getenv("GROQ_API_KEY") or st.secrets["GROQ_API_KEY"]
+    )
     API_KEY = os.getenv('GNEWS_API_KEY')
     os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
     query = que
