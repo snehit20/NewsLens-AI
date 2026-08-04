@@ -30,21 +30,32 @@ def build_chain(que):
         "https://gnews.io/api/v4/search",
         params={
             "q": query,
-            "apikey": API_KEY
-        }
+            "apikey": API_KEY,
+            "max": 10,
+            "lang": "en"
+        },
+        timeout=20
     )
 
     data = response.json()
 
-    #extracting url with it's metadata
+    print("Status:", response.status_code)
+    print("Response:", data)
+
+    if response.status_code != 200:
+        raise Exception(f"GNews Error: {response.status_code}\n{data}")
+
+    if "articles" not in data:
+        raise Exception(f"GNews did not return articles.\nResponse: {data}")
+
     metadata_lookup = {}
 
-    for articles in data['articles'][:10]:
-        metadata_lookup[articles['url']] = {
-                "title":articles['title'],
-                "publishedAt":articles['publishedAt'],
-                "url":articles["url"],
-                "source":articles['source']['name']
+    for article in data["articles"]:
+        metadata_lookup[article["url"]] = {
+            "title": article["title"],
+            "publishedAt": article["publishedAt"],
+            "url": article["url"],
+            "source": article["source"]["name"],
         }
 
     urls = list(metadata_lookup.keys())
