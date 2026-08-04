@@ -21,9 +21,6 @@ def build_chain(que):
     os.environ["GROQ_API_KEY"] = (
         os.getenv("GROQ_API_KEY") or st.secrets["GROQ_API_KEY"]
     )
-    API_KEY = os.getenv('GNEWS_API_KEY')
-    os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
-    query = que
 
     #calling GNews for url
     response = requests.get(
@@ -67,9 +64,14 @@ def build_chain(que):
 
         try:
             loader = WebBaseLoader(
-                web_path=[url],
-                requests_kwargs={"timeout": 10}
-            )
+            web_path=[url],
+            requests_kwargs={
+                "timeout":20,
+                "headers":{
+                    "User-Agent":"Mozilla/5.0"
+                }
+            }
+        )
 
             doc = loader.load()
             docs.extend(doc)
@@ -116,6 +118,14 @@ def build_chain(que):
     )
 
     chunks = splitter.split_documents(docs)
+
+    print("Documents:", len(docs))
+    print("Chunks:", len(chunks))
+
+    if not chunks:
+        raise Exception(
+            "No document chunks were created. Most likely every news website blocked scraping."
+        )
 
     print(len(chunks))
 
