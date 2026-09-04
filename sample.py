@@ -147,7 +147,7 @@ def build_chain(que):
 
 
     #main Mind
-    llm = ChatGroq(model="llama-3.3-70b-versatile")
+    llm = ChatGroq(model="openai/gpt-oss-20b")
     temp = """
     You are NewsLens AI, a news research assistant.
 
