@@ -21,7 +21,7 @@ topic = st.text_input(
 
 if st.button("Load News"):
     if topic:
-        with st.spinner("Loading articles and building knowledge base..."):
+        with st.spinner("Loading articles and building knowledge base... This may take a few seconds to a minute. Please wait."):
             st.session_state.chain = build_chain(topic)
 
         st.success(f"Loaded news for: {topic}")
